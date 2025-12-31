@@ -1,7 +1,7 @@
 {
   description = "C/C++ Shell";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
   outputs =
     { self, nixpkgs }:
@@ -36,7 +36,7 @@
             ];
 
             shellHook = ''
-              echo "C Shell"
+              echo "C/C++ Shell"
               echo -n "gcc:     " && gcc --version | head -n1
               echo -n "clang:   " && clang --version | head -n1
               echo -n "cmake:   " && cmake --version | head -n1

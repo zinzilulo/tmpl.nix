@@ -1,5 +1,5 @@
 {
-  description = "Rust Shell";
+  description = "Zig Shell";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
@@ -26,16 +26,12 @@
         {
           default = pkgs.mkShell {
             buildInputs = [
-              pkgs.rustc
-              pkgs.cargo
-              pkgs.rustfmt
-              pkgs.clippy
+              pkgs.zig
             ];
 
             shellHook = ''
-              echo "Rust Shell"
-              rustc --version
-              cargo --version
+              echo "Zig Shell"
+              zig version
             '';
           };
         }

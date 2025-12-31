@@ -1,7 +1,7 @@
 {
-  description = "Haskell CW (GHC 9.6)";
+  description = "Haskell Shell (GHC 9.6)";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
   outputs =
     { self, nixpkgs }:
@@ -41,7 +41,7 @@
             ];
 
             shellHook = ''
-              echo "Haskell Coursework Shell (GHC 9.6)"
+              echo "Haskell Shell (GHC 9.6)"
               ghc --version
               hlint --version
             '';

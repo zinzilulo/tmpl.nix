@@ -2,7 +2,7 @@
   description = "Flaky templates";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
   };
 
   outputs =
@@ -47,14 +47,14 @@
       );
 
       templates = {
-        cw-kotlin = {
-          path = ./cw/kotlin;
-          description = "Kotlin CW (JDK 21)";
+        kotlin = {
+          path = ./kotlin;
+          description = "Kotlin Shell (JDK 21)";
         };
 
-        cw-haskell = {
-          path = ./cw/haskell;
-          description = "Haskell CW (GHC 9.6)";
+        haskell = {
+          path = ./haskell;
+          description = "Haskell Shell (GHC 9.6)";
         };
 
         rust = {

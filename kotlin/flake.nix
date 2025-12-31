@@ -1,7 +1,7 @@
 {
-  description = "Kotlin CW (JDK 21)";
+  description = "Kotlin Shell (JDK 21)";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
   outputs =
     { self, nixpkgs }:
@@ -33,7 +33,7 @@
             ];
 
             shellHook = ''
-              echo "Kotlin Coursework Shell (JDK 21)"
+              echo "Kotlin Shell (JDK 21)"
               kotlin -version
               gradle --version
               java -version

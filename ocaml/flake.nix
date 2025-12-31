@@ -1,7 +1,7 @@
 {
   description = "OCaml Shell";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
   outputs =
     { self, nixpkgs }:
@@ -22,21 +22,20 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-
-          ocamlPkgs = pkgs.ocamlPackages;
         in
         {
           default = pkgs.mkShell {
             buildInputs = [
-              ocamlPkgs.ocaml
-              ocamlPkgs.dune_3
-              ocamlPkgs.findlib
+              pkgs.ocaml
+              pkgs.opam
+              pkgs.dune_3
               pkgs.ocamlformat
             ];
 
             shellHook = ''
               echo "OCaml Shell"
               echo -n "OCaml:        " && ocamlc -version
+              echo -n "Opam:         " && opam --version
               echo -n "Dune:         " && dune --version
               echo -n "ocamlformat:  " && ocamlformat --version
             '';

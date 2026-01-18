@@ -15,7 +15,7 @@
         "aarch64-darwin"
       ];
 
-      forAllSystems = f: lib.genattrs systems f;
+      forAllSystems = f: lib.genAttrs systems f;
     in
     {
       devShells = forAllSystems (

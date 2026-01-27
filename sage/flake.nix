@@ -21,12 +21,30 @@
       devShells = forAllSystems (
         system:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = import nixpkgs {
+            inherit system;
+
+            overlays = [
+              (final: prev: {
+                sage = prev.sage.override {
+                  requireSageTests = false;
+                };
+
+                singular =
+                  (prev.singular.override {
+                    enableDocs = false;
+                  }).overrideAttrs
+                    (_: {
+                      doCheck = false;
+                    });
+              })
+            ];
+          };
         in
         {
           default = pkgs.mkShell {
             buildInputs = [
-              pkgs.sage
+              pkgs.sageWithDoc
             ];
 
             shellHook = ''

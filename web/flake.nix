@@ -1,5 +1,5 @@
 {
-  description = "Web Shell (Node 22)";
+  description = "Web Shell";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
@@ -22,25 +22,16 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          nodePkgs = pkgs.nodePackages_latest;
         in
         {
           default = pkgs.mkShell {
             buildInputs = [
-              pkgs.nodejs_22
-              nodePkgs.typescript
-              nodePkgs.eslint
-              nodePkgs.prettier
+              pkgs.minhtml
             ];
 
             shellHook = ''
-              echo "Web Shell (Node 22)"
-
-              echo -n "node:       " && node -v
-              echo -n "npm:        " && npm -v
-              echo -n "tsc:        " && tsc -v
-              echo -n "eslint:     " && eslint -v
-              echo -n "prettier:   " && prettier -v
+              echo "Web Shell"
+              minhtml -V
             '';
           };
         }

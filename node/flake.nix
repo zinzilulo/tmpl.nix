@@ -1,5 +1,5 @@
 {
-  description = "TeX Shell";
+  description = "Node Shell (Node 22)";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
@@ -22,16 +22,27 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
+          nodePkgs = pkgs.nodePackages_latest;
         in
         {
           default = pkgs.mkShell {
             buildInputs = [
-              pkgs.tectonic
+              pkgs.nodejs_22
+              pkgs.minhtml
+              nodePkgs.typescript
+              nodePkgs.eslint
+              nodePkgs.prettier
             ];
 
             shellHook = ''
-              echo "TeX Shell"
-              tectonic -V
+              echo "Node Shell (Node 22)"
+
+              echo -n "node:       " && node -v
+              echo -n "npm:        " && npm -v
+              echo -n "tsc:        " && tsc -v
+              echo -n "eslint:     " && eslint -v
+              echo -n "prettier:   " && prettier -v
+              minhtml -V
             '';
           };
         }

@@ -1,5 +1,5 @@
 {
-  description = "TeX Shell";
+  description = "Python 3 Shell";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
@@ -26,12 +26,14 @@
         {
           default = pkgs.mkShell {
             buildInputs = [
-              pkgs.tectonic
+              pkgs.python3
+              pkgs.ruff
             ];
 
             shellHook = ''
-              echo "TeX Shell"
-              tectonic -V
+              echo "Python 3 Shell"
+              python3 -V
+              ruff -V
             '';
           };
         }

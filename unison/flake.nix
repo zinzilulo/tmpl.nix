@@ -1,5 +1,5 @@
 {
-  description = "Android Shell";
+  description = "Unison Shell";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
@@ -26,17 +26,12 @@
         {
           default = pkgs.mkShell {
             buildInputs = [
-              pkgs.apktool
-              pkgs.jadx
-              pkgs.android-tools
-              pkgs.jdk21
+              pkgs.unison-ucm
             ];
 
             shellHook = ''
-              echo "Android Shell"
-              java -version
-              echo -n "apktool:  " && apktool --version
-              echo -n "jadx:     " && jadx --version
+              echo "Unison Shell"
+              ucm -v
             '';
           };
         }

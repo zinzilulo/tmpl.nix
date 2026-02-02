@@ -28,8 +28,6 @@
             buildInputs = [
               pkgs.ghidra
               pkgs.jdk21
-              pkgs.binutils
-              pkgs.gdb
             ];
 
             shellHook = ''

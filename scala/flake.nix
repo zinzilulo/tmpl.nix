@@ -1,5 +1,5 @@
 {
-  description = "Android Shell";
+  description = "Scala 3 Shell (JDK 21)";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
@@ -26,17 +26,16 @@
         {
           default = pkgs.mkShell {
             buildInputs = [
-              pkgs.apktool
-              pkgs.jadx
-              pkgs.android-tools
               pkgs.jdk21
+              pkgs.scala-next
+              pkgs.scalafmt
             ];
 
             shellHook = ''
-              echo "Android Shell"
+              echo "Scala 3 Shell (JDK 21)"
               java -version
-              echo -n "apktool:  " && apktool --version
-              echo -n "jadx:     " && jadx --version
+              scala -version
+              scalafmt -v
             '';
           };
         }
